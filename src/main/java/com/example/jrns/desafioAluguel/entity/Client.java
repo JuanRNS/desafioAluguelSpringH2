@@ -29,9 +29,6 @@ public class Client implements Serializable {
     private Long id;
     private String nome;
     private String cpf;
-    @ManyToOne
-    @JoinColumn(name = "carro_id")
-    private Car car;
     private LocalDate dataNascimento;
     private LocalDate dataCadastro;
     private LocalDate alteracaoCliente;

@@ -45,7 +45,7 @@ public class ClientService implements Serializable {
         clientAtual.setDataNascimento(clientAnt.getDataNascimento());
     }
     public Client retornoCliente(ClientDTO client) {
-        return new Client(client.id(),client.nome(),client.nome(),client.car(),client.dataNascimento(),client.dataCadastro(),client.alteracaoCliente());
+        return new Client(client.id(),client.nome(),client.nome(),client.dataNascimento(),client.dataCadastro(),client.alteracaoCliente());
     }
 
 }
