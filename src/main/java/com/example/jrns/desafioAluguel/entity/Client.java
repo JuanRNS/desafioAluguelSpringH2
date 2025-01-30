@@ -35,4 +35,5 @@ public class Client implements Serializable {
     private LocalDate dataNascimento;
     private LocalDate dataCadastro;
     private LocalDate alteracaoCliente;
+
 }

@@ -40,9 +40,15 @@ public class instantiation implements CommandLineRunner {
                 null,
                 LocalDate.parse("22/05/2002",dtf),
                 LocalDate.parse("01/08/2018",dtf), LocalDate.now());
-
+        Client client3 = new Client(null,
+                "Fafa Mendes",
+                "033.333.344-72",
+                null,
+                LocalDate.parse("22/05/2003",dtf),
+                LocalDate.parse("01/08/2020",dtf), LocalDate.now());
         clientRepository.save(client1);
         clientRepository.save(client2);
+        clientRepository.save(client3);
 
     }
 }

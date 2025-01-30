@@ -1,40 +1,17 @@
 package com.example.jrns.desafioAluguel.dto;
 
+
 import com.example.jrns.desafioAluguel.entity.Car;
 import com.example.jrns.desafioAluguel.entity.Client;
-import lombok.*;
 
-import java.io.Serial;
-import java.io.Serializable;
 import java.time.LocalDate;
 
+public record ClientDTO (Long id, String nome, String cpf,  Car car,
+         LocalDate dataNascimento,
+         LocalDate dataCadastro,
+        LocalDate alteracaoCliente) {
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
-public class ClientDTO implements Serializable {
-
-
-    @Serial
-    private static final long serialVersionUID = 1L;
-
-    private Long id;
-    private String nome;
-    private String cpf;
-    private Car car;
-    private LocalDate dataNascimento;
-    private LocalDate dataCadastro;
-    private LocalDate alteracaoCliente;
-
-    public ClientDTO(Client client) {
-        id = client.getId();
-        nome = client.getNome();
-        cpf = client.getCpf();
-        car = client.getCar();
-        dataNascimento = client.getDataNascimento();
-        dataCadastro = client.getDataCadastro();
-        alteracaoCliente = client.getAlteracaoCliente();
+    public ClientDTO (Client client) {
+        this(client.getId(),client.getNome(),client.getCpf(),client.getCar(),client.getDataNascimento(),client.getDataCadastro(),client.getAlteracaoCliente());
     }
-
 }

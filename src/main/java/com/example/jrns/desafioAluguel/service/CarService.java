@@ -27,8 +27,8 @@ public class CarService implements Serializable {
     public Car buscarCarroPorId(Long id) {
         return carRepository.findById(id).get();
     }
-    public void excluirCarro(Car car) {
-        carRepository.delete(car);
+    public void excluirCarro(Long id) {
+        carRepository.deleteById(id);
     }
     public void alterarCarro(Car car) {
         Car carAtual = carRepository.findById(car.getId()).get();

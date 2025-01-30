@@ -32,25 +32,20 @@ public class ClientService implements Serializable {
         alterar(client1, client);
         clientRepository.save(client1);
     }
-    public void removerCliente(Client client) {
-        clientRepository.delete(client);
+    public void removerCliente(Long id) {
+        clientRepository.deleteById(id);
     }
     public List<Client> listarClientes() {
         return clientRepository.findAll();
     }
-
 
     private void alterar (Client clientAnt, Client clientAtual) {
         clientAtual.setNome(clientAnt.getNome());
         clientAtual.setCpf(clientAnt.getCpf());
         clientAtual.setDataNascimento(clientAnt.getDataNascimento());
     }
-
-    public Client doDto(ClientDTO clientDTO) {
-        return new Client(clientDTO.getId(),clientDTO.getNome(),
-                clientDTO.getCpf(),clientDTO.getCar(),
-                clientDTO.getDataNascimento(),
-                clientDTO.getDataCadastro(),
-                clientDTO.getAlteracaoCliente());
+    public Client retornoCliente(ClientDTO client) {
+        return new Client(client.id(),client.nome(),client.nome(),client.car(),client.dataNascimento(),client.dataCadastro(),client.alteracaoCliente());
     }
+
 }

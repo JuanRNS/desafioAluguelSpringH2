@@ -24,12 +24,23 @@ public class ClientController {
         List<ClientDTO> dtos = clients.stream().map(ClientDTO::new).toList();
         return ResponseEntity.ok(dtos);
     }
-
-    @PostMapping
-    public ResponseEntity<Void> insert(@RequestBody ClientDTO client) {
-        Client client1 = clientService.doDto(client);
-        clientService.cadastrarCliente(client1);
-        URI uri =ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(client1.getId()).toUri();
-        return ResponseEntity.created(uri).build();
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
+        Client client = clientService.buscarClientePorId(id);
+        return ResponseEntity.ok(new ClientDTO(client));
     }
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ClientDTO> update(@PathVariable Long id, @RequestBody ClientDTO dto) {
+        Client client = clientService.retornoCliente(dto);
+        client.setId(id);
+        clientService.alterarCliente(client);
+        return ResponseEntity.noContent().build();
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        clientService.removerCliente(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }
