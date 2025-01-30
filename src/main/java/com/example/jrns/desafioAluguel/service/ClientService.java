@@ -39,7 +39,7 @@ public class ClientService implements Serializable {
         return clientRepository.findAll();
     }
 
-    private void alterar (Client clientAnt, Client clientAtual) {
+    public void alterar (Client clientAnt, Client clientAtual) {
         clientAtual.setNome(clientAnt.getNome());
         clientAtual.setCpf(clientAnt.getCpf());
         clientAtual.setDataNascimento(clientAnt.getDataNascimento());
